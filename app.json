@@ -1,0 +1,12 @@
+{
+  "name": "brief-reactnative-cryptocurrency",
+  "displayName": "brief-reactnative-cryptocurrency",
+  "expo": {
+    "name": "brief-reactnative-cryptocurrency",
+    "slug": "brief-reactnative-cryptocurrency",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
