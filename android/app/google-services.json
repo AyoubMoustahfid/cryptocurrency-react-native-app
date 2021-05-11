@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "600306302602",
+    "project_id": "cryptocurrency-app-b6c7e",
+    "storage_bucket": "cryptocurrency-app-b6c7e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:600306302602:android:17fb7596de9fb46d36f773",
+        "android_client_info": {
+          "package_name": "com.briefreactnativecryptocurrency"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "600306302602-vb0rda0kh59r6q5ufd8gfp4feujj2ai9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkpFTET7USOL-v32pT_HEChn7WjICfVJg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "600306302602-vb0rda0kh59r6q5ufd8gfp4feujj2ai9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
