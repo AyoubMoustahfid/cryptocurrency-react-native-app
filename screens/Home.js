@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {View, Text, StyleSheet, ScrollView, Image,FlatList, TouchableOpacity} from 'react-native'
 import Swiper from 'react-native-swiper'
 
@@ -136,61 +136,74 @@ const  DATA = [
 ]
 
 
-const Item = ({ id }) => (
-    <View style={{
-        backgroundColor: 'white',
-        borderRadius: 5,
-        elevation: 5,
-        marginVertical: 10,
-        marginHorizontal: 5,
-        padding: 10
-    }}>
-        <View style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center'
-        }}>
-            <View style={{
-                flexDirection: 'row',
-            }}>
-                <View >
-                    <Image 
-                        source={require('./../assets/images/cryptocurrency-logo.jpg')} 
-                        style={{width:50, height: 50}}/>
-                </View>
-                <View>
-                    <Text style={{fontSize: 15}}>Hello Swiper</Text>
-                    <Text style={styles.small}>BTC</Text>
-                </View>
-            </View>
 
-            <View style={{
-                flexDirection: 'column',
-                alignItems: 'flex-end'
-            }}>
-               <Text style={{fontSize: 15, fontWeight: 'bold'}}>$170435.86</Text>
-               <Text style={{fontSize: 12}}>5.1 BTC</Text>
-            </View>
-        </View>  
-        <TouchableOpacity style={{
-            backgroundColor: 'blue',
-            padding: 10,
-            flexDirection: 'row',
-            justifyContent: 'center',
-            marginTop: 10,
-            borderRadius: 10
-        }}>
-            <Text style={{color: '#fff', fontWeight: 'bold'}}>Reservation</Text>
-        </TouchableOpacity>
-    </View>
-  );
 
 function Home() {
     const integer = 404.9774667045200896
     const volumeUsd24Hr = 39299874590
 
+    const [data, setData] = useState('')
+
+    useEffect(() => {
+        fetch('api.coincap.io/v2/assets', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(res => {
+            console.log(res);
+            setData(res)
+        })
+    })
+
     const renderItem = ({ item }) => (
-        <Item id={item.id} />
+        <View style={{
+            backgroundColor: 'white',
+            borderRadius: 5,
+            elevation: 5,
+            marginVertical: 10,
+            marginHorizontal: 5,
+            padding: 10
+        }}>
+            <View style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+            }}>
+                <View style={{
+                    flexDirection: 'row',
+                }}>
+                    <View >
+                        <Image 
+                            source={require('./../assets/images/cryptocurrency-logo.jpg')} 
+                            style={{width:50, height: 50}}/>
+                    </View>
+                    <View>
+                        <Text style={{fontSize: 15}}>{item.name}</Text>
+                        <Text style={styles.small}>{item.symbol}</Text>
+                    </View>
+                </View>
+    
+                <View style={{
+                    flexDirection: 'column',
+                    alignItems: 'flex-end'
+                }}>
+                   <Text style={{fontSize: 15, fontWeight: 'bold'}}>${item.supply.toString().substring(14, 0)}</Text>
+                   <Text style={{fontSize: 12}}>{item.priceUsd.toString().substring(5, 2)} {item.symbol}</Text>
+                </View>
+            </View>  
+            <TouchableOpacity style={{
+                backgroundColor: 'blue',
+                padding: 10,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                marginTop: 10,
+                borderRadius: 10
+            }}>
+                <Text style={{color: '#fff', fontWeight: 'bold'}}>Reservation</Text>
+            </TouchableOpacity>
+        </View>
     );
     
     return (
